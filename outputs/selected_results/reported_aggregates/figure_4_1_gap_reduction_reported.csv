@@ -1,0 +1,9 @@
+model_family,specification,model_role,gap_closed_percent,source_pdf_page,source_figure
+Logistic regression,Full + short-term,extension,56.4,57,Figure 4.1
+Logistic regression,Full + short-term + head-to-head,primary,57.3,57,Figure 4.1
+Logistic regression,Full + short-term + common opponent,extension,56.4,57,Figure 4.1
+Logistic regression,Full + short-term + head-to-head + common opponent,extension,57.2,57,Figure 4.1
+Neural network,Short-term,primary,58.8,57,Figure 4.1
+Neural network,Short-term + head-to-head,extension,57.5,57,Figure 4.1
+Neural network,Short-term + common opponent,extension,61.0,57,Figure 4.1
+Neural network,Short-term + head-to-head + common opponent,extension,57.7,57,Figure 4.1

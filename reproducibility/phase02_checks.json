@@ -1,0 +1,768 @@
+{
+  "phase": 2,
+  "date": "2026-10-11",
+  "time_zone": "Etc/UTC",
+  "scope": "Source-checking and aggregate-only presentation; no statistical replication.",
+  "research_scripts_execution": "NOT-RUN",
+  "r_parse_and_execution": {
+    "status": "BLOCKED",
+    "reason": "R and Rscript absent"
+  },
+  "github_access": "NOT-RUN",
+  "publication": "NOT-RUN",
+  "phase_3": "NOT-RUN",
+  "input_integrity": {
+    "status": "EXECUTED",
+    "checksums_passed": 17,
+    "phase_1_zip_sha256": "3f9ad981795ed4070879b53e6c0f9d17d4d9795ccf4aa8f668e214cf61b7f393"
+  },
+  "phase_1_preservation": {
+    "status": "EXECUTED",
+    "modelling_scripts_byte_identical": 14,
+    "script_sha256": {
+      "R/01_data_processing.R": "6eb4fa35938771096d6d79d0fd60b3bbde77dd64c2ef6ee7e86809dbcd62c7a4",
+      "R/02_prepare_bookmaker_data.R": "f5e863ef6909f297f444e246c4f077d2f0555a153ddb34622303fdbd95572d8c",
+      "R/03_add_score_data.R": "b0390414e2bf3e20b342247c9d896a05a3242830491631d31bee280ea47fe508",
+      "R/04_prepare_ttt_input.R": "28ec49f9c1e3af6c38f66c704751673c6752bd47300c776a5460e7616367c759",
+      "R/05_ttt_baseline.R": "28f6440c8dd78755bd08d9a12f1e18af202bce13b890d70e26286271f87e0f59",
+      "R/06_build_covariates.R": "b823611b95f81d3b88754c2f3e29ccc6f1e09d9aaf58d3cb6ce8c5a8ad3d975d",
+      "R/07_build_short_term_covariates.R": "fcb9461dfe62b2f6f9fafe2fa240610744e41bd7fad8ca64beeaf7283ddc8d03",
+      "R/08_merge_covariates.R": "53ff14b22f3aae53f613b39ed3ec161d7eedfe8cde819188b5b40b34030654b0",
+      "R/09_build_matchup_covariates.R": "bfd047c26f3ff1263b9e7a46d2b311515da2f3b6ee2b1f11ceaf8ee3db2f48c1",
+      "R/10_logistic_models.R": "fea7f8c5c4b09ccec14755531897cc911389e2e16afc1b6bee5681022f1b5c20",
+      "R/11_neural_network_models.R": "c266278b388add08e6e971eebfc73c335a191aac9b16d5b184ed244261021990",
+      "R/12_nn_convergence_sensitivity.R": "e23eb0533e48eebd35abf2804f43d7da1ad87b0153961e17a33cc42852bf3a5b",
+      "R/13_primary_nn_final_rerun.R": "f983ae8742355ef1c5fa4bbbced82e45e82155ba7c1cebdf2b4dd6adc5a35544",
+      "R/14_final_diagnostics.R": "29908a0699d6b1000e1ee39c9b1cef7e97a9639b2bbb01a5322b2d785dfb7ac2"
+    },
+    "unchanged_prior_audit_and_handoff": true,
+    "changed_inherited_repo_files": [
+      ".gitignore",
+      "README.md",
+      "outputs/selected_results/README.md",
+      "reproducibility/environment.md",
+      "reproducibility/pipeline.md"
+    ],
+    "removed_placeholder": "figures/.gitkeep"
+  },
+  "reported_aggregates": {
+    "value_provenance_status": "SOURCE-CHECKED",
+    "byte_and_control_checks": "EXECUTED",
+    "files": {
+      "figure_4_1_gap_reduction_reported.csv": {
+        "rows": 8,
+        "sha256": "eb692ace73af88ddb38b629c1c8923e425df243a82bf67fba4712a48385255cd"
+      },
+      "figure_4_2_disagreement_by_uncertainty_reported.csv": {
+        "rows": 4,
+        "sha256": "affa41a6080051a51263b61f6a7f251ce3ae16e1d8b12cd18be5d71be2bc3fe6"
+      },
+      "figure_4_3_disagreement_logloss_reported.csv": {
+        "rows": 4,
+        "sha256": "9436eb55817b6279d458a45783f4092e3a3f8a1d539a6eace2fd928f05c2d940"
+      },
+      "table_4_3_primary_test_results_reported.csv": {
+        "rows": 4,
+        "sha256": "07d2ea3a95c8e16cfeded73031606dbbecb543a47e129b785ba0506e31dc5a02"
+      }
+    },
+    "reviewed_rows": 20,
+    "reviewed_numeric_result_count_cells": 44,
+    "independent_prediction_verification": "NOT-RUN"
+  },
+  "rounded_aggregate_arithmetic": {
+    "status": "DERIVED-FROM-ROUNDED-AGGREGATES",
+    "computation": "EXECUTED",
+    "split_sum": 39154,
+    "disagreement_quartile_count_sum": 1496,
+    "full_disagreement_percent_rounded": "18.25",
+    "test_disagreement_percent_rounded": "19.37",
+    "q4_minus_q1_percentage_points": "11.79",
+    "overall_logistic_closure_percent": "57.323944",
+    "overall_nn_closure_percent": "58.732394",
+    "disagreement_logistic_closure_percent": "69.632266",
+    "disagreement_nn_closure_percent": "75.088968",
+    "overall_gap_from_printed_logloss": "0.0710",
+    "overall_gap_reported_pdf_p57": "0.0709",
+    "limit": "Does not reproduce metrics or reconcile unrounded identities."
+  },
+  "presentation_code": {
+    "python_syntax_and_generation": "EXECUTED",
+    "python_input_scope": "Only three checksum-guarded reported-aggregate CSVs",
+    "r_helper": "STATIC-ONLY",
+    "r_lexical_quotes_delimiters": "STATIC-ONLY: balanced",
+    "r_grammar_parse": "BLOCKED",
+    "r_execution": "NOT-RUN",
+    "analysis_01_to_14_executed": false
+  },
+  "figures": {
+    "status": "EXECUTED",
+    "exact_count": 3,
+    "files": {
+      "test_gap_reduction.png": {
+        "size_pixels": [
+          2440,
+          1680
+        ],
+        "sha256": "c78c7f10d637b547be5002280f166c258d90dd1393eb47af101d543053efb47c",
+        "format": "PNG",
+        "dpi": 200,
+        "visual_review": "EXECUTED"
+      },
+      "disagreement_by_uncertainty.png": {
+        "size_pixels": [
+          2120,
+          1260
+        ],
+        "sha256": "73fb06c64e045e62e0d0459d82190cee736a4bb5e7110197fdaa3af2db1c1fdc",
+        "format": "PNG",
+        "dpi": 200,
+        "visual_review": "EXECUTED"
+      },
+      "disagreement_logloss_by_uncertainty.png": {
+        "size_pixels": [
+          2120,
+          1380
+        ],
+        "sha256": "fc301215b140abd9f006c5b8b0059fbd6a65177453f5e430bde9f1ef30966589",
+        "format": "PNG",
+        "dpi": 200,
+        "visual_review": "EXECUTED"
+      }
+    }
+  },
+  "public_payload_inventory": {
+    "status": "EXECUTED",
+    "repository_file_count": 37,
+    "exact_allowlisted_csv_count": 4,
+    "no_original_pdf_raw_data_checkpoints_fitted_objects_logs_archives_git_metadata": true,
+    "no_symlinks_or_oversized_files": true
+  },
+  "gitignore": {
+    "status": "EXECUTED",
+    "method": "Isolated local Git check-ignore; no remotes/accounts",
+    "cases_passed": 82,
+    "results": [
+      {
+        "path": "data/raw/atp_odds_2010_2025/2010.xls",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/raw/atp_odds_2010_2025/2025.xlsx",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "2010.xls",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "2025.xlsx",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/processed/atp_ttt_input_2010_2025.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/processed/extra.json",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/processed/player_lookup_2010_2025.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/processed/rolling_checkpoints/glm_example_date.rds",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/processed/rolling_checkpoints_primary_nn_maxit1000/primary_nn_validation_grid_checkpoint.rds",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "rolling_checkpoints_extra/cache.bin",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/logs/ttt_genuine_yearly_sessionInfo.txt",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_run_summary.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/tables/any.txt",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/figures/bookmaker_calibration.png",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/sensitivity/nn_convergence_sensitivity_predictions.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/unreviewed.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/unreviewed.json",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "temporary.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "temporary.tsv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "fitted.rds",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "fitted.RDS",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".Rhistory",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".RData",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".Renviron",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".env",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".env.local",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "private_key.pem",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "Rplots.pdf",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "source_report.pdf",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "starter.zip",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "sources/ATP/R_original/01_DataProcessing.R",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "reference/Portfolio_Execution_Spec_v1.0.md",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "R_original/01_DataProcessing.R",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "private/note.txt",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "staging/note.txt",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".DS_Store",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "Thumbs.db",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/logs/run.log",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/unreviewed.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/unreviewed.json",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/match_predictions.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/subdir/figure_4_1_gap_reduction_reported.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "data/processed/figure_4_1_gap_reduction_reported.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/figure_4_1_gap_reduction_reported.csv",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/__pycache__/make_portfolio_figures.cpython-312.pyc",
+        "ignored": true,
+        "pass": true
+      },
+      {
+        "path": ".gitignore",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/01_data_processing.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/02_prepare_bookmaker_data.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/03_add_score_data.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/04_prepare_ttt_input.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/05_ttt_baseline.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/06_build_covariates.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/07_build_short_term_covariates.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/08_merge_covariates.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/09_build_matchup_covariates.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/10_logistic_models.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/11_neural_network_models.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/12_nn_convergence_sensitivity.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/13_primary_nn_final_rerun.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/14_final_diagnostics.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "R/15_make_portfolio_figures.R",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "README.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "data/README.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "figures/disagreement_by_uncertainty.png",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "figures/disagreement_logloss_by_uncertainty.png",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "figures/test_gap_reduction.png",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/README.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/figure_4_1_gap_reduction_reported.csv",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/figure_4_2_disagreement_by_uncertainty_reported.csv",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/figure_4_3_disagreement_logloss_reported.csv",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/reported_aggregates/table_4_3_primary_test_results_reported.csv",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/code_edits.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/code_edits.patch",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/dependencies.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/environment.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/make_portfolio_figures.py",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/phase02_checks.json",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/pipeline.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/portfolio_figures.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/source_map.json",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/source_map.md",
+        "ignored": false,
+        "pass": true
+      },
+      {
+        "path": "reproducibility/static_checks.json",
+        "ignored": false,
+        "pass": true
+      }
+    ]
+  },
+  "links_and_readme": {
+    "status": "EXECUTED",
+    "local_targets_passed": 47,
+    "embedded_figures": 3,
+    "readme_whitespace_words": 1294,
+    "external_data_url_visited": false,
+    "links": [
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/source_map.md"
+      },
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/source_map.json"
+      },
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/dependencies.md"
+      },
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/pipeline.md"
+      },
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/environment.md"
+      },
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/code_edits.patch"
+      },
+      {
+        "file": "ATP_PIPELINE_AUDIT.md",
+        "target": "atp-tennis-forecasting/reproducibility/code_edits.md"
+      },
+      {
+        "file": "ATP_RESULT_VERIFICATION.md",
+        "target": "atp-tennis-forecasting/reproducibility/portfolio_figures.md"
+      },
+      {
+        "file": "ATP_RESULT_VERIFICATION.md",
+        "target": "atp-tennis-forecasting/reproducibility/phase02_checks.json"
+      },
+      {
+        "file": "ATP_RESULT_VERIFICATION.md",
+        "target": "ATP_PIPELINE_AUDIT.md"
+      },
+      {
+        "file": "ATP_RESULT_VERIFICATION.md",
+        "target": "PHASE01_PORTFOLIO_HANDOFF.md"
+      },
+      {
+        "file": "PHASE01_PORTFOLIO_HANDOFF.md",
+        "target": "ATP_PIPELINE_AUDIT.md"
+      },
+      {
+        "file": "PHASE01_PORTFOLIO_HANDOFF.md",
+        "target": "atp-tennis-forecasting/reproducibility/source_map.md"
+      },
+      {
+        "file": "PHASE01_PORTFOLIO_HANDOFF.md",
+        "target": "atp-tennis-forecasting/reproducibility/code_edits.md"
+      },
+      {
+        "file": "PHASE01_PORTFOLIO_HANDOFF.md",
+        "target": "atp-tennis-forecasting/reproducibility/code_edits.patch"
+      },
+      {
+        "file": "PORTFOLIO_HANDOFF.md",
+        "target": "ATP_RESULT_VERIFICATION.md"
+      },
+      {
+        "file": "PORTFOLIO_HANDOFF.md",
+        "target": "atp-tennis-forecasting/reproducibility/portfolio_figures.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "data/README.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "reproducibility/pipeline.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "figures/test_gap_reduction.png"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "figures/disagreement_by_uncertainty.png"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "figures/disagreement_logloss_by_uncertainty.png"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "reproducibility/environment.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "reproducibility/dependencies.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "reproducibility/source_map.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "reproducibility/code_edits.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/README.md",
+        "target": "reproducibility/portfolio_figures.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/outputs/selected_results/README.md",
+        "target": "../../reproducibility/portfolio_figures.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/code_edits.md",
+        "target": "source_map.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/code_edits.md",
+        "target": "source_map.json"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/code_edits.md",
+        "target": "code_edits.patch"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/environment.md",
+        "target": "portfolio_figures.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/environment.md",
+        "target": "static_checks.json"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/environment.md",
+        "target": "phase02_checks.json"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/pipeline.md",
+        "target": "dependencies.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/pipeline.md",
+        "target": "portfolio_figures.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "../outputs/selected_results/reported_aggregates/"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "../outputs/selected_results/README.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "../figures/test_gap_reduction.png"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "../figures/disagreement_by_uncertainty.png"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "../figures/disagreement_logloss_by_uncertainty.png"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "pipeline.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "environment.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "dependencies.md"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/portfolio_figures.md",
+        "target": "phase02_checks.json"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/source_map.md",
+        "target": "source_map.json"
+      },
+      {
+        "file": "atp-tennis-forecasting/reproducibility/source_map.md",
+        "target": "code_edits.patch"
+      }
+    ]
+  },
+  "privacy_patterns": {
+    "status": "STATIC-ONLY",
+    "pattern_scan_execution": "EXECUTED",
+    "unresolved_findings": {
+      "personal_absolute_paths": [],
+      "credential_patterns": [],
+      "private_email_patterns": [],
+      "student_identifier_patterns": [],
+      "international_phone_patterns": []
+    },
+    "reviewed_false_positive": "Phase 1 JSON file-size threshold of 10 MiB is not an identifier",
+    "limit": "Heuristics and manual review; not exhaustive certification or publication permission"
+  }
+}

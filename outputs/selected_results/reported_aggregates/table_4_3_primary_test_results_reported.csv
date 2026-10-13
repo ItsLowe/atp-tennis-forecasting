@@ -1,0 +1,5 @@
+model,model_role,logloss,brier_score,accuracy_percent,source_pdf_page,source_table
+Bookmaker benchmark,benchmark,0.5866,0.2019,68.13,55,Table 4.3
+TTT baseline,baseline,0.6576,0.2275,63.7,55,Table 4.3
+Primary logistic regression,primary,0.6169,0.2148,65.48,55,Table 4.3
+Primary neural network,primary,0.6159,0.2143,64.96,55,Table 4.3

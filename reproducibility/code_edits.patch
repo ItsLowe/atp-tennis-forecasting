@@ -1,0 +1,260 @@
+--- R_original/01_DataProcessing.R
++++ R/01_data_processing.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Import annual workbooks, clean completed matches and normalize bookmaker probabilities.
++# Source: 01_DataProcessing.R
++# Working directory: repository root (not R/).
++# Dependencies: readxl.
++# Inputs: see reproducibility/dependencies.md, stage 01.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 01 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ if (!requireNamespace("readxl", quietly = TRUE)) {
+   stop("Package 'readxl' is required. Install it with install.packages('readxl')")
+--- R_original/02_PrepareBookmakerData.R
++++ R/02_prepare_bookmaker_data.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Fix Player A/B orientation, assign chronological splits and evaluate preliminary bookmaker probabilities.
++# Source: 02_PrepareBookmakerData.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 02.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 02 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/03_AddScoreData.R
++++ R/03_add_score_data.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Merge annual set scores into modelling data and calculate the total-games workload proxy.
++# Source: 03_AddScoreData.R
++# Working directory: repository root (not R/).
++# Dependencies: readxl.
++# Inputs: see reproducibility/dependencies.md, stage 03.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 03 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/04_PrepareTTTInput.R
++++ R/04_prepare_ttt_input.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Set the final bookmaker benchmark and create chronological match and player identifiers.
++# Source: 04_PrepareTTTInput.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 04.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 04 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ rm(list = ls())
+ 
+ input_file <- "data/processed/atp_odds_modelling_ready_with_scores.csv"
+--- R_original/05_TTTBaseline.R
++++ R/05_ttt_baseline.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Generate annual-refit TTT forecasts with same-date predictions before daily updates.
++# Source: 05_TTTBaseline.R
++# Working directory: repository root (not R/).
++# Dependencies: TrueSkillThroughTime, hash.
++# Inputs: see reproducibility/dependencies.md, stage 05.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 05 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ rm(list = ls())
+ 
+ 
+--- R_original/06_BuildCovariates.R
++++ R/06_build_covariates.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Build pre-match ranking, form, surface, experience, rest and workload covariates.
++# Source: 06_BuildCovariates.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 06.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 06 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/07_BuildShortTermCovariates.R
++++ R/07_build_short_term_covariates.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Build previous-match and seven-day rest and workload covariates.
++# Source: 07_BuildShortTermCovariates.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 07.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 07 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/08_MergeCovariates.R
++++ R/08_merge_covariates.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Merge the base and short-term feature branches by match_id.
++# Source: 08_MergeCovariates.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 08.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 08 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/09_BuildMatchupCovariates.R
++++ R/09_build_matchup_covariates.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Add pre-match identity labels, head-to-head and common-opponent features.
++# Source: 09_BuildMatchupCovariates.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 09.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 09 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ rm(list = ls())
+ 
+ input_file <- "data/processed/atp_covariates_with_shortterm_2010_2025.csv"
+@@ -24,7 +34,7 @@
+ 
+ if (!"match_total_games" %in% names(df)) {
+   
+-  score_file <- "data/processed/atp_ttt_predictions_2010_2025.csv"
++  score_file <- "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv"
+   
+   if (!file.exists(score_file)) {
+     stop(
+--- R_original/10_LogisticModels.R
++++ R/10_logistic_models.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Fit eight predefined logistic candidates and generate daily rolling-origin test predictions.
++# Source: 10_LogisticModels.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 10.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 10 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/11_NeuralNetworkModels.R
++++ R/11_neural_network_models.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Compare four NN feature families at maxit 300 and generate daily rolling-origin test predictions.
++# Source: 11_NeuralNetworkModels.R
++# Working directory: repository root (not R/).
++# Dependencies: nnet.
++# Inputs: see reproducibility/dependencies.md, stage 11.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 11 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ 
+ rm(list = ls())
+ 
+--- R_original/12_NNConvergenceSensitivity.R
++++ R/12_nn_convergence_sensitivity.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Compare maxit 300 and 1000 at sampled test dates using the already selected family configurations.
++# Source: 12_NNConvergenceSensitivity.R
++# Working directory: repository root (not R/).
++# Dependencies: nnet.
++# Inputs: see reproducibility/dependencies.md, stage 12.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 12 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ rm(list = ls())
+ 
+ ############################################################
+@@ -5,7 +15,7 @@
+ ############################################################
+ 
+ # This script checks whether increasing nnet's iteration limit changes the
+-# rolling-origin predictions materially. It is independent of 11_NeuralNetworkModels.R:
++# rolling-origin predictions materially. It is independent of 11_neural_network_models.R:
+ # it does not alter the existing NN prediction file or rolling checkpoints.
+ 
+ input_file <-
+@@ -29,7 +39,7 @@
+ dates_per_year <- 4L
+ converged_dates_per_year <- 2L
+ 
+-# This checkpoint is separate from the checkpoints used by 11_NeuralNetworkModels.R.
++# This checkpoint is separate from the checkpoints used by 11_neural_network_models.R.
+ resume_sensitivity_checkpoint <- TRUE
+ 
+ dir.create(
+@@ -252,7 +262,7 @@
+ )
+ 
+ ############################################################
+-# Define the same four NN specifications as 11_NeuralNetworkModels.R
++# Define the same four NN specifications as 11_neural_network_models.R
+ ############################################################
+ 
+ model_formula_shortterm <- y_a ~
+--- R_original/13_PrimaryNNFinalRerun.R
++++ R/13_primary_nn_final_rerun.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Rerun the primary short-term NN validation grid and rolling test fits at maxit 1000.
++# Source: 13_PrimaryNNFinalRerun.R
++# Working directory: repository root (not R/).
++# Dependencies: nnet.
++# Inputs: see reproducibility/dependencies.md, stage 13.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 13 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ rm(list = ls())
+ 
+ input_file <-
+--- R_original/14_FinalDiagnostics.R
++++ R/14_final_diagnostics.R
+@@ -1,3 +1,13 @@
++# Phase 1 repository preparation; analysis NOT RUN.
++# Author: Zhiheng Huang
++# Purpose: Evaluate final disagreement subsets and training-defined TTT uncertainty quartiles without fitting models.
++# Source: 14_FinalDiagnostics.R
++# Working directory: repository root (not R/).
++# Dependencies: base/distributed R packages only.
++# Inputs: see reproducibility/dependencies.md, stage 14.
++# Outputs: see reproducibility/dependencies.md; generated data stay private.
++# Order: 14 of 14; see reproducibility/pipeline.md.
++# Phase 1 edits: see reproducibility/code_edits.md and code_edits.patch.
+ rm(list = ls())
+ 
+ input_file <-

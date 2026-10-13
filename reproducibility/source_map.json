@@ -1,0 +1,544 @@
+{
+  "phase": 1,
+  "date": "2026-10-10",
+  "stages": [
+    {
+      "n": 1,
+      "source": "01_DataProcessing.R",
+      "public": "01_data_processing.R",
+      "purpose": "Import annual workbooks, clean completed matches and normalize bookmaker probabilities.",
+      "packages": [
+        "readxl"
+      ],
+      "upstream": [],
+      "inputs": [
+        "data/raw/atp_odds_2010_2025/{2010,...,2025}.xls or .xlsx"
+      ],
+      "outputs": [
+        "data/processed/atp_odds_clean_all_completed.csv",
+        "data/processed/atp_odds_clean_with_bookmaker_prob.csv"
+      ],
+      "notes": "External input. Reads every .xls/.xlsx in the raw folder, sorted by filename; use exactly one workbook per year. Both output files remain private.",
+      "tables": [],
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "e54571c56479dc1a1fddd5e5cb3019c00e359a85b2d923b58e3effc9593adb16",
+      "public_sha256": "6eb4fa35938771096d6d79d0fd60b3bbde77dd64c2ef6ee7e86809dbcd62c7a4",
+      "header_bytes": 545,
+      "source_lines": 175,
+      "source_bytes": 6804,
+      "public_bytes": 7349
+    },
+    {
+      "n": 2,
+      "source": "02_PrepareBookmakerData.R",
+      "public": "02_prepare_bookmaker_data.R",
+      "purpose": "Fix Player A/B orientation, assign chronological splits and evaluate preliminary bookmaker probabilities.",
+      "packages": [],
+      "upstream": [
+        1
+      ],
+      "inputs": [
+        "data/processed/atp_odds_clean_with_bookmaker_prob.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_odds_modelling_ready.csv"
+      ],
+      "tables": [
+        "outputs/tables/bookmaker_overall_metrics.csv",
+        "outputs/tables/bookmaker_probability_source_comparison.csv",
+        "outputs/tables/bookmaker_metrics_by_split.csv",
+        "outputs/tables/bookmaker_metrics_by_year.csv",
+        "outputs/tables/bookmaker_metrics_by_surface.csv",
+        "outputs/tables/bookmaker_metrics_by_court.csv",
+        "outputs/tables/bookmaker_metrics_by_series.csv",
+        "outputs/tables/bookmaker_metrics_by_round.csv",
+        "outputs/tables/bookmaker_calibration_bins.csv"
+      ],
+      "figures": [
+        "outputs/figures/bookmaker_logloss_by_year.png",
+        "outputs/figures/bookmaker_accuracy_by_year.png",
+        "outputs/figures/bookmaker_calibration.png"
+      ],
+      "notes": "Seed 123 fixes label orientation. The surface/court/series/round summaries are conditional on those columns. The default early benchmark is p_book_main_a; stage 04 sets the final market-mean benchmark. Existing plotting code is retained and was not executed.",
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "42350c0c724064941398c881f53e3186571fa677b82cfd18428d5e7bf950995b",
+      "public_sha256": "f5e863ef6909f297f444e246c4f077d2f0555a153ddb34622303fdbd95572d8c",
+      "header_bytes": 595,
+      "source_lines": 447,
+      "source_bytes": 10980,
+      "public_bytes": 11575
+    },
+    {
+      "n": 3,
+      "source": "03_AddScoreData.R",
+      "public": "03_add_score_data.R",
+      "purpose": "Merge annual set scores into modelling data and calculate the total-games workload proxy.",
+      "packages": [
+        "readxl"
+      ],
+      "upstream": [
+        2
+      ],
+      "inputs": [
+        "data/processed/atp_odds_modelling_ready.csv",
+        "data/raw/atp_odds_2010_2025/{2010,...,2025}.xls or .xlsx"
+      ],
+      "outputs": [
+        "data/processed/atp_odds_modelling_ready_with_scores.csv"
+      ],
+      "tables": [
+        "outputs/tables/score_columns_missing_summary.csv"
+      ],
+      "notes": "Prefers .xls over .xlsx if both exist for a year; warns and skips missing years. Merge keys: date, tournament, winner, loser; duplicated score keys keep their first occurrence. No workbooks were supplied.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "167163bf0506b5c0b8d80e1356d73f665ebf056c9ab9ca32057cbb92c78f7e95",
+      "public_sha256": "b0390414e2bf3e20b342247c9d896a05a3242830491631d31bee280ea47fe508",
+      "header_bytes": 545,
+      "source_lines": 336,
+      "source_bytes": 8256,
+      "public_bytes": 8801
+    },
+    {
+      "n": 4,
+      "source": "04_PrepareTTTInput.R",
+      "public": "04_prepare_ttt_input.R",
+      "purpose": "Set the final bookmaker benchmark and create chronological match and player identifiers.",
+      "packages": [],
+      "upstream": [
+        3
+      ],
+      "inputs": [
+        "data/processed/atp_odds_modelling_ready_with_scores.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_ttt_input_2010_2025.csv",
+        "data/processed/player_lookup_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/ttt_input_summary.csv"
+      ],
+      "notes": "Uses p_book_market_mean_a when the column exists, otherwise p_book_main_a; filters invalid final probabilities. Retains available score fields and match_total_games.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "ca7b342c91757f9e60a933c7a2212c8d80fb7fcc6ab9bc4b6c57c9bca74d5791",
+      "public_sha256": "28ec49f9c1e3af6c38f66c704751673c6752bd47300c776a5460e7616367c759",
+      "header_bytes": 573,
+      "source_lines": 253,
+      "source_bytes": 6199,
+      "public_bytes": 6772
+    },
+    {
+      "n": 5,
+      "source": "05_TTTBaseline.R",
+      "public": "05_ttt_baseline.R",
+      "purpose": "Generate annual-refit TTT forecasts with same-date predictions before daily updates.",
+      "packages": [
+        "TrueSkillThroughTime",
+        "hash"
+      ],
+      "upstream": [
+        4
+      ],
+      "inputs": [
+        "data/processed/atp_ttt_input_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/ttt_genuine_yearly_metrics_by_split.csv",
+        "outputs/tables/ttt_genuine_yearly_vs_bookmaker_by_split.csv",
+        "outputs/tables/ttt_genuine_yearly_model_settings.csv"
+      ],
+      "checkpoints": [
+        "data/processed/atp_ttt_genuine_yearly_predictions_checkpoint.csv"
+      ],
+      "logs": [
+        "outputs/logs/ttt_genuine_yearly_run_log.txt",
+        "outputs/logs/ttt_genuine_yearly_sessionInfo.txt"
+      ],
+      "notes": "Costly stage; NOT RUN. Automatically reads its checkpoint if present and resume is enabled. Annual checkpoint matching checks match_id and annual frequency but lacks input hashes and a complete settings signature.",
+      "figures": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "4168a756a8a8f51a44002c1fb01a2390d28e982ee9a9c16a49b371cabfad9c67",
+      "public_sha256": "28f6440c8dd78755bd08d9a12f1e18af202bce13b890d70e26286271f87e0f59",
+      "header_bytes": 559,
+      "source_lines": 1448,
+      "source_bytes": 26922,
+      "public_bytes": 27481
+    },
+    {
+      "n": 6,
+      "source": "06_BuildCovariates.R",
+      "public": "06_build_covariates.R",
+      "purpose": "Build pre-match ranking, form, surface, experience, rest and workload covariates.",
+      "packages": [],
+      "upstream": [
+        5
+      ],
+      "inputs": [
+        "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_covariates_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/covariate_missing_summary.csv",
+        "outputs/tables/covariate_summary.csv"
+      ],
+      "notes": "Computes all covariates for a date before updating histories. Retains the input columns, including scores. Exposes TTT logit and uncertainty; the mean-skill difference is descriptive and is not a separate fitted predictor.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "5579e81f8298da717a581068ec452f70c6d865535f6f6cf6928d43666f06e093",
+      "public_sha256": "b823611b95f81d3b88754c2f3e29ccc6f1e09d9aaf58d3cb6ce8c5a8ad3d975d",
+      "header_bytes": 566,
+      "source_lines": 478,
+      "source_bytes": 13929,
+      "public_bytes": 14495
+    },
+    {
+      "n": 7,
+      "source": "07_BuildShortTermCovariates.R",
+      "public": "07_build_short_term_covariates.R",
+      "purpose": "Build previous-match and seven-day rest and workload covariates.",
+      "packages": [],
+      "upstream": [
+        5
+      ],
+      "inputs": [
+        "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_shortterm_fatigue_covariates_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/shortterm_fatigue_missing_summary.csv"
+      ],
+      "notes": "Separate branch from stage 05, kept seventh in the supplied order. Requires match_total_games; uses the training-set median for missing previous-match games. Exports match_id and short-term features.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "11660218abe18a8c1518e708cec35eac307609a639a22e6d3f74a566984f1d38",
+      "public_sha256": "fcb9461dfe62b2f6f9fafe2fa240610744e41bd7fad8ca64beeaf7283ddc8d03",
+      "header_bytes": 558,
+      "source_lines": 375,
+      "source_bytes": 11610,
+      "public_bytes": 12168
+    },
+    {
+      "n": 8,
+      "source": "08_MergeCovariates.R",
+      "public": "08_merge_covariates.R",
+      "purpose": "Merge the base and short-term feature branches by match_id.",
+      "packages": [],
+      "upstream": [
+        6,
+        7
+      ],
+      "inputs": [
+        "data/processed/atp_covariates_2010_2025.csv",
+        "data/processed/atp_shortterm_fatigue_covariates_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_covariates_with_shortterm_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/merged_shortterm_covariate_missing_summary.csv"
+      ],
+      "notes": "Checks unique identifiers and unchanged row count; restores the base row order.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "31c0794d0ddd8bdd98e2bd13feadb8adeb7c45be474c46d2dd94044b3b797dba",
+      "public_sha256": "53ff14b22f3aae53f613b39ed3ec161d7eedfe8cde819188b5b40b34030654b0",
+      "header_bytes": 544,
+      "source_lines": 149,
+      "source_bytes": 3962,
+      "public_bytes": 4506
+    },
+    {
+      "n": 9,
+      "source": "09_BuildMatchupCovariates.R",
+      "public": "09_build_matchup_covariates.R",
+      "purpose": "Add pre-match identity labels, head-to-head and common-opponent features.",
+      "packages": [],
+      "upstream": [
+        8
+      ],
+      "inputs": [
+        "data/processed/atp_covariates_with_shortterm_2010_2025.csv"
+      ],
+      "conditional_inputs": [
+        "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_covariates_with_identity_h2h_common_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/identity_h2h_common_missing_summary.csv"
+      ],
+      "notes": "Conditional score input is read only if match_total_games is absent; its legacy filename was corrected to the stage-05 output. Normal 03-08 propagation retains this column. Stops if any total-games values remain missing. Identity labels are retained outputs, not predictors in the fitted formulas.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "optional_inputs": [],
+      "source_sha256": "a2e6206f169afb17cd6567283abd3bcc98e1ed32836fb9f84e720ccf2f80a1da",
+      "public_sha256": "bfd047c26f3ff1263b9e7a46d2b311515da2f3b6ee2b1f11ceaf8ee3db2f48c1",
+      "header_bytes": 565,
+      "source_lines": 430,
+      "source_bytes": 12803,
+      "public_bytes": 13383
+    },
+    {
+      "n": 10,
+      "source": "10_LogisticModels.R",
+      "public": "10_logistic_models.R",
+      "purpose": "Fit eight predefined logistic candidates and generate daily rolling-origin test predictions.",
+      "packages": [],
+      "upstream": [
+        9
+      ],
+      "inputs": [
+        "data/processed/atp_covariates_with_identity_h2h_common_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/logistic_rolling_origin_audit.csv",
+        "outputs/tables/logistic_rolling_origin_settings.csv",
+        "outputs/tables/logistic_model_comparison_by_split.csv",
+        "outputs/tables/logistic_model_comparison_test.csv",
+        "outputs/tables/logistic_full_shortterm_model_coefficients.csv",
+        "outputs/tables/logistic_h2h_common_gap_reduction_summary.csv"
+      ],
+      "checkpoints": [
+        "data/processed/rolling_checkpoints/glm_<probability_column>_date.rds"
+      ],
+      "figures": [
+        "outputs/figures/test_logloss_model_comparison.png",
+        "outputs/figures/test_accuracy_model_comparison.png"
+      ],
+      "notes": "Costly stage; NOT RUN. Imputation and standardization use the original training partition; test fits use dates strictly earlier than the forecast date. Checkpoint signatures include input MD5 and formula. The saved coefficient table is for the initial full-short-term candidate, not the primary H2H model or all rolling fits. Plotting code retained, not executed.",
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "a142b2dae32ec93b754e3c1ba1f3837f777167d166934cf7812de1a600202d82",
+      "public_sha256": "fea7f8c5c4b09ccec14755531897cc911389e2e16afc1b6bee5681022f1b5c20",
+      "header_bytes": 576,
+      "source_lines": 1177,
+      "source_bytes": 28666,
+      "public_bytes": 29242
+    },
+    {
+      "n": 11,
+      "source": "11_NeuralNetworkModels.R",
+      "public": "11_neural_network_models.R",
+      "purpose": "Compare four NN feature families at maxit 300 and generate daily rolling-origin test predictions.",
+      "packages": [
+        "nnet"
+      ],
+      "upstream": [
+        10
+      ],
+      "inputs": [
+        "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_nn_shortterm_h2h_common_predictions_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/nn_h2h_common_hyperparameter_results.csv",
+        "outputs/tables/nn_h2h_common_best_hyperparameters.csv",
+        "outputs/tables/nn_rolling_origin_audit.csv",
+        "outputs/tables/nn_rolling_origin_settings.csv",
+        "outputs/tables/nn_model_comparison_by_split.csv",
+        "outputs/tables/nn_model_comparison_test.csv",
+        "outputs/tables/nn_h2h_common_gap_summary.csv"
+      ],
+      "checkpoints": [
+        "data/processed/rolling_checkpoints/nnet_<probability_column>_date.rds"
+      ],
+      "figures": [
+        "outputs/figures/nn_test_logloss_comparison.png",
+        "outputs/figures/nn_test_accuracy_comparison.png"
+      ],
+      "notes": "Costly stage; NOT RUN. Uses 48 size/decay/seed combinations per family (192 fits), selected by validation log loss. Preprocessed z_ columns come from stage 10. The selected family fits then undergo daily test refits. The final primary NN results come from stage 13, not this provisional short-term column. Plotting code retained, not executed.",
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "db815887f6fac230d1e34b7ea7fd1a9282cb51fb4f4f716f257b09cce240fc61",
+      "public_sha256": "c266278b388add08e6e971eebfc73c335a191aac9b16d5b184ed244261021990",
+      "header_bytes": 558,
+      "source_lines": 1176,
+      "source_bytes": 28280,
+      "public_bytes": 28838
+    },
+    {
+      "n": 12,
+      "source": "12_NNConvergenceSensitivity.R",
+      "public": "12_nn_convergence_sensitivity.R",
+      "purpose": "Compare maxit 300 and 1000 at sampled test dates using the already selected family configurations.",
+      "packages": [
+        "nnet"
+      ],
+      "upstream": [
+        10,
+        11
+      ],
+      "inputs": [
+        "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv",
+        "outputs/tables/nn_h2h_common_best_hyperparameters.csv",
+        "outputs/tables/nn_rolling_origin_audit.csv"
+      ],
+      "optional_inputs": [
+        "data/processed/atp_nn_shortterm_h2h_common_predictions_2010_2025.csv",
+        "outputs/tables/nn_model_comparison_by_split.csv"
+      ],
+      "outputs": [],
+      "tables": [
+        "outputs/sensitivity/nn_convergence_sensitivity_selected_origins.csv",
+        "outputs/sensitivity/nn_convergence_sensitivity_original_audit.csv",
+        "outputs/sensitivity/nn_convergence_sensitivity_fit_summary.csv",
+        "outputs/sensitivity/nn_convergence_sensitivity_predictions.csv",
+        "outputs/sensitivity/nn_convergence_sensitivity_by_origin.csv",
+        "outputs/sensitivity/nn_convergence_sensitivity_summary.csv"
+      ],
+      "checkpoints": [
+        "outputs/sensitivity/nn_convergence_sensitivity_checkpoint.rds"
+      ],
+      "notes": "Research sensitivity branch; NOT RUN and not a lightweight check. Four dates per test year, four families and two iteration limits imply 96 fits when all three test years are present. Optional prediction input enables the maxit-300 reproduction comparison; optional metrics input supplies its reference comparison. No stage-13 input is produced here.",
+      "figures": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "source_sha256": "b2d4b404f1eff6c4e493b10c579a406cb385e1d75f5636223533202e980fa9c8",
+      "public_sha256": "e23eb0533e48eebd35abf2804f43d7da1ad87b0153961e17a33cc42852bf3a5b",
+      "header_bytes": 554,
+      "source_lines": 1513,
+      "source_bytes": 36517,
+      "public_bytes": 37077
+    },
+    {
+      "n": 13,
+      "source": "13_PrimaryNNFinalRerun.R",
+      "public": "13_primary_nn_final_rerun.R",
+      "purpose": "Rerun the primary short-term NN validation grid and rolling test fits at maxit 1000.",
+      "packages": [
+        "nnet"
+      ],
+      "upstream": [
+        10,
+        11
+      ],
+      "inputs": [
+        "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv",
+        "data/processed/atp_nn_shortterm_h2h_common_predictions_2010_2025.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_nn_primary_maxit1000_predictions_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_hyperparameter_results.csv",
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_best_hyperparameters.csv",
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_rolling_origin_audit.csv",
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_model_comparison_by_split.csv",
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_run_summary.csv",
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_run_settings.csv"
+      ],
+      "checkpoints": [
+        "data/processed/rolling_checkpoints_primary_nn_maxit1000/primary_nn_validation_grid_checkpoint.rds",
+        "data/processed/rolling_checkpoints_primary_nn_maxit1000/primary_nn_rolling_origin_checkpoint.rds"
+      ],
+      "notes": "Costly stage; NOT RUN. Selects the lowest validation log loss among converged grid fits and keeps size/decay/seed fixed for daily test refits. Requires the stage-11 file to carry forward the three extension-NN columns and preserves the old short-term column as p_nn_shortterm_a_maxit300. Enforces split sizes 28890/2539/7725 and 876 test dates. It does not read stage-12 outputs.",
+      "figures": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "2c2f8696bdc498ca72e4f8b086cc8a33144249b2e2796fc3c2ef9790baba14c9",
+      "public_sha256": "f983ae8742355ef1c5fa4bbbced82e45e82155ba7c1cebdf2b4dd6adc5a35544",
+      "header_bytes": 545,
+      "source_lines": 1205,
+      "source_bytes": 28051,
+      "public_bytes": 28596
+    },
+    {
+      "n": 14,
+      "source": "14_FinalDiagnostics.R",
+      "public": "14_final_diagnostics.R",
+      "purpose": "Evaluate final disagreement subsets and training-defined TTT uncertainty quartiles without fitting models.",
+      "packages": [],
+      "upstream": [
+        13
+      ],
+      "inputs": [
+        "data/processed/atp_nn_primary_maxit1000_predictions_2010_2025.csv",
+        "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_run_summary.csv"
+      ],
+      "outputs": [
+        "data/processed/atp_final_disagreement_diagnostics_primary_nn_maxit1000_2010_2025.csv"
+      ],
+      "tables": [
+        "outputs/tables/final_disagreement_maxit1000/final_disagreement_count_summary.csv",
+        "outputs/tables/final_disagreement_maxit1000/final_model_disagreement_results_by_split.csv",
+        "outputs/tables/final_disagreement_maxit1000/final_disagreement_gap_recovery.csv",
+        "outputs/tables/final_disagreement_maxit1000/final_ttt_uncertainty_training_quartile_breaks.csv",
+        "outputs/tables/final_disagreement_maxit1000/final_disagreement_ttt_uncertainty_quartile_counts.csv",
+        "outputs/tables/final_disagreement_maxit1000/final_disagreement_by_ttt_uncertainty_quartile.csv"
+      ],
+      "notes": "NOT RUN. Requires a maxit-1000 summary with zero nonconverged validation and rolling fits, expected split counts and agreement with the primary NN test log loss. Uses >=0.5 directions and training-only type-7 uncertainty quartiles with open-ended outer intervals. No plots are produced by this script.",
+      "figures": [],
+      "checkpoints": [],
+      "logs": [],
+      "conditional_inputs": [],
+      "optional_inputs": [],
+      "source_sha256": "33cc4de9d65496d619e30007bd8ddae9a9ed07df292239b396f4eb995a9a881b",
+      "public_sha256": "29908a0699d6b1000e1ee39c9b1cef7e97a9639b2bbb01a5322b2d785dfb7ac2",
+      "header_bytes": 592,
+      "source_lines": 1314,
+      "source_bytes": 24185,
+      "public_bytes": 24777
+    }
+  ],
+  "edits": [
+    {
+      "script": "09_build_matchup_covariates.R",
+      "source_line": 27,
+      "kind": "conditional input filename",
+      "before": "data/processed/atp_ttt_predictions_2010_2025.csv",
+      "after": "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv"
+    },
+    {
+      "script": "12_nn_convergence_sensitivity.R",
+      "source_lines": [
+        8,
+        32,
+        255
+      ],
+      "kind": "comment references",
+      "before": "11_NeuralNetworkModels.R",
+      "after": "11_neural_network_models.R"
+    }
+  ]
+}

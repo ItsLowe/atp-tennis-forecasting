@@ -1,0 +1,801 @@
+{
+  "phase": 1,
+  "date": "2026-10-10",
+  "scope": "Repository preparation; static checks only; no R code evaluated.",
+  "r_parse": {
+    "status": "NOT RUN",
+    "reason": "R and Rscript are not installed"
+  },
+  "analysis": {
+    "status": "NOT RUN",
+    "reason": "Not authorized in Phase 1; raw workbooks absent"
+  },
+  "github_access": "NOT STARTED",
+  "publication": "NOT STARTED",
+  "scripts": [
+    {
+      "file": "R/01_data_processing.R",
+      "sha256": "6eb4fa35938771096d6d79d0fd60b3bbde77dd64c2ef6ee7e86809dbcd62c7a4",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/02_prepare_bookmaker_data.R",
+      "sha256": "f5e863ef6909f297f444e246c4f077d2f0555a153ddb34622303fdbd95572d8c",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/03_add_score_data.R",
+      "sha256": "b0390414e2bf3e20b342247c9d896a05a3242830491631d31bee280ea47fe508",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/04_prepare_ttt_input.R",
+      "sha256": "28ec49f9c1e3af6c38f66c704751673c6752bd47300c776a5460e7616367c759",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/05_ttt_baseline.R",
+      "sha256": "28f6440c8dd78755bd08d9a12f1e18af202bce13b890d70e26286271f87e0f59",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/06_build_covariates.R",
+      "sha256": "b823611b95f81d3b88754c2f3e29ccc6f1e09d9aaf58d3cb6ce8c5a8ad3d975d",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/07_build_short_term_covariates.R",
+      "sha256": "fcb9461dfe62b2f6f9fafe2fa240610744e41bd7fad8ca64beeaf7283ddc8d03",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/08_merge_covariates.R",
+      "sha256": "53ff14b22f3aae53f613b39ed3ec161d7eedfe8cde819188b5b40b34030654b0",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/09_build_matchup_covariates.R",
+      "sha256": "bfd047c26f3ff1263b9e7a46d2b311515da2f3b6ee2b1f11ceaf8ee3db2f48c1",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 1
+    },
+    {
+      "file": "R/10_logistic_models.R",
+      "sha256": "fea7f8c5c4b09ccec14755531897cc911389e2e16afc1b6bee5681022f1b5c20",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/11_neural_network_models.R",
+      "sha256": "c266278b388add08e6e971eebfc73c335a191aac9b16d5b184ed244261021990",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/12_nn_convergence_sensitivity.R",
+      "sha256": "e23eb0533e48eebd35abf2804f43d7da1ad87b0153961e17a33cc42852bf3a5b",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/13_primary_nn_final_rerun.R",
+      "sha256": "f983ae8742355ef1c5fa4bbbced82e45e82155ba7c1cebdf2b4dd6adc5a35544",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    },
+    {
+      "file": "R/14_final_diagnostics.R",
+      "sha256": "29908a0699d6b1000e1ee39c9b1cef7e97a9639b2bbb01a5322b2d785dfb7ac2",
+      "body_matches_documented_edit_map": true,
+      "quotes_and_delimiters": "STATIC CHECK ONLY: balanced",
+      "non_comment_token_differences": 0
+    }
+  ],
+  "source_preservation": {
+    "status": "VERIFIED",
+    "original_r_scripts_unchanged": 14,
+    "original_pdf_unchanged": true,
+    "source_zip_crc": "PASS"
+  },
+  "script_inventory": {
+    "status": "VERIFIED",
+    "count": 14,
+    "order": "01-14",
+    "script_15_absent": true
+  },
+  "code_preservation": {
+    "status": "VERIFIED",
+    "non_comment_tokens_identical_scripts": 13,
+    "script_09_changed_string_tokens": 1,
+    "comment_reference_changes_in_script_12": 3,
+    "limit": "Byte and token comparisons are not proof of runtime equivalence."
+  },
+  "lexical_check": {
+    "status": "STATIC CHECK ONLY",
+    "scripts_checked": 14,
+    "limit": "Lightweight Python lexer; not an R grammar parser; no script sourcing."
+  },
+  "dependency_inventory": {
+    "status": "STATIC CHECK ONLY",
+    "direct_external_packages": [
+      "TrueSkillThroughTime",
+      "hash",
+      "nnet",
+      "readxl"
+    ],
+    "explicit_namespaces": [
+      "TrueSkillThroughTime",
+      "hash",
+      "nnet",
+      "readxl",
+      "stats",
+      "tools",
+      "utils"
+    ],
+    "installed_or_loaded": false,
+    "hash_version": "Not reported by the PDF"
+  },
+  "path_closure": {
+    "status": "STATIC CHECK ONLY",
+    "all_generated_inputs_have_earlier_producers": true,
+    "conditional_stage_09_producer": 5,
+    "edges": [
+      {
+        "consumer": 1,
+        "path": "data/raw/atp_odds_2010_2025/{2010,...,2025}.xls or .xlsx",
+        "role": "inputs",
+        "producer": "external",
+        "available": false
+      },
+      {
+        "consumer": 2,
+        "path": "data/processed/atp_odds_clean_with_bookmaker_prob.csv",
+        "role": "inputs",
+        "producer": 1,
+        "available": false
+      },
+      {
+        "consumer": 3,
+        "path": "data/processed/atp_odds_modelling_ready.csv",
+        "role": "inputs",
+        "producer": 2,
+        "available": false
+      },
+      {
+        "consumer": 3,
+        "path": "data/raw/atp_odds_2010_2025/{2010,...,2025}.xls or .xlsx",
+        "role": "inputs",
+        "producer": "external",
+        "available": false
+      },
+      {
+        "consumer": 4,
+        "path": "data/processed/atp_odds_modelling_ready_with_scores.csv",
+        "role": "inputs",
+        "producer": 3,
+        "available": false
+      },
+      {
+        "consumer": 5,
+        "path": "data/processed/atp_ttt_input_2010_2025.csv",
+        "role": "inputs",
+        "producer": 4,
+        "available": false
+      },
+      {
+        "consumer": 6,
+        "path": "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv",
+        "role": "inputs",
+        "producer": 5,
+        "available": false
+      },
+      {
+        "consumer": 7,
+        "path": "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv",
+        "role": "inputs",
+        "producer": 5,
+        "available": false
+      },
+      {
+        "consumer": 8,
+        "path": "data/processed/atp_covariates_2010_2025.csv",
+        "role": "inputs",
+        "producer": 6,
+        "available": false
+      },
+      {
+        "consumer": 8,
+        "path": "data/processed/atp_shortterm_fatigue_covariates_2010_2025.csv",
+        "role": "inputs",
+        "producer": 7,
+        "available": false
+      },
+      {
+        "consumer": 9,
+        "path": "data/processed/atp_covariates_with_shortterm_2010_2025.csv",
+        "role": "inputs",
+        "producer": 8,
+        "available": false
+      },
+      {
+        "consumer": 9,
+        "path": "data/processed/atp_ttt_genuine_yearly_predictions_2010_2025.csv",
+        "role": "conditional_inputs",
+        "producer": 5,
+        "available": false
+      },
+      {
+        "consumer": 10,
+        "path": "data/processed/atp_covariates_with_identity_h2h_common_2010_2025.csv",
+        "role": "inputs",
+        "producer": 9,
+        "available": false
+      },
+      {
+        "consumer": 11,
+        "path": "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv",
+        "role": "inputs",
+        "producer": 10,
+        "available": false
+      },
+      {
+        "consumer": 12,
+        "path": "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv",
+        "role": "inputs",
+        "producer": 10,
+        "available": false
+      },
+      {
+        "consumer": 12,
+        "path": "outputs/tables/nn_h2h_common_best_hyperparameters.csv",
+        "role": "inputs",
+        "producer": 11,
+        "available": false
+      },
+      {
+        "consumer": 12,
+        "path": "outputs/tables/nn_rolling_origin_audit.csv",
+        "role": "inputs",
+        "producer": 11,
+        "available": false
+      },
+      {
+        "consumer": 12,
+        "path": "data/processed/atp_nn_shortterm_h2h_common_predictions_2010_2025.csv",
+        "role": "optional_inputs",
+        "producer": 11,
+        "available": false
+      },
+      {
+        "consumer": 12,
+        "path": "outputs/tables/nn_model_comparison_by_split.csv",
+        "role": "optional_inputs",
+        "producer": 11,
+        "available": false
+      },
+      {
+        "consumer": 13,
+        "path": "data/processed/atp_logistic_predictions_with_h2h_common_2010_2025.csv",
+        "role": "inputs",
+        "producer": 10,
+        "available": false
+      },
+      {
+        "consumer": 13,
+        "path": "data/processed/atp_nn_shortterm_h2h_common_predictions_2010_2025.csv",
+        "role": "inputs",
+        "producer": 11,
+        "available": false
+      },
+      {
+        "consumer": 14,
+        "path": "data/processed/atp_nn_primary_maxit1000_predictions_2010_2025.csv",
+        "role": "inputs",
+        "producer": 13,
+        "available": false
+      },
+      {
+        "consumer": 14,
+        "path": "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_run_summary.csv",
+        "role": "inputs",
+        "producer": 13,
+        "available": false
+      }
+    ],
+    "missing_external_files": "One workbook for each year 2010-2025; intentionally not supplied.",
+    "runtime_schema_or_content_verification": "NOT RUN"
+  },
+  "publication_scan": {
+    "status": "STATIC CHECK ONLY",
+    "files_scanned": 29,
+    "heuristic_findings": {
+      "personal_absolute_paths": [],
+      "credential_patterns": [],
+      "private_email_patterns": [],
+      "student_identifier_patterns": [],
+      "international_phone_patterns": []
+    },
+    "reviewed_non_sensitive_matches": [
+      {
+        "file": "atp-tennis-forecasting/reproducibility/static_checks.json",
+        "pattern": "student_identifier_patterns",
+        "reason": "Configured 10 MiB file-size threshold; not a personal identifier."
+      }
+    ],
+    "active_network_shell_or_install_calls": [],
+    "limit": "Heuristic text review and inventory; not an exhaustive secret scanner or a license clearance."
+  },
+  "release_file_inventory": {
+    "status": "VERIFIED",
+    "raw_or_processed_data_files": 0,
+    "original_pdf_files": 0,
+    "generated_results_or_figures": 0,
+    "git_metadata_files": 0,
+    "license_added": false,
+    "oversized_threshold_bytes": 10485760,
+    "oversized_files": [],
+    "largest_file": {
+      "file": "atp-tennis-forecasting/R/12_nn_convergence_sensitivity.R",
+      "bytes": 37077
+    }
+  },
+  "documentation_links": [
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/source_map.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/source_map.json",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/dependencies.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/pipeline.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/environment.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/code_edits.patch",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "ATP_PIPELINE_AUDIT.md",
+      "target": "atp-tennis-forecasting/reproducibility/code_edits.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "PORTFOLIO_HANDOFF.md",
+      "target": "ATP_PIPELINE_AUDIT.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "PORTFOLIO_HANDOFF.md",
+      "target": "atp-tennis-forecasting/reproducibility/source_map.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "PORTFOLIO_HANDOFF.md",
+      "target": "atp-tennis-forecasting/reproducibility/code_edits.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "PORTFOLIO_HANDOFF.md",
+      "target": "atp-tennis-forecasting/reproducibility/code_edits.patch",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/README.md",
+      "target": "data/README.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/README.md",
+      "target": "reproducibility/pipeline.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/data/README.md",
+      "target": "http://www.tennis-data.co.uk/",
+      "status": "NOT RUN: external link not visited"
+    },
+    {
+      "file": "atp-tennis-forecasting/reproducibility/code_edits.md",
+      "target": "source_map.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/reproducibility/code_edits.md",
+      "target": "source_map.json",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/reproducibility/code_edits.md",
+      "target": "code_edits.patch",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/reproducibility/pipeline.md",
+      "target": "dependencies.md",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/reproducibility/source_map.md",
+      "target": "source_map.json",
+      "status": "VERIFIED: local target exists"
+    },
+    {
+      "file": "atp-tennis-forecasting/reproducibility/source_map.md",
+      "target": "code_edits.patch",
+      "status": "VERIFIED: local target exists"
+    }
+  ],
+  "gitignore_check": {
+    "status": "VERIFIED",
+    "method": "git check-ignore in an isolated local repository; no remote configured or accessed.",
+    "cases": 47,
+    "results": [
+      {
+        "path": "data/raw/atp_odds_2010_2025/2010.xls",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/raw/",
+        "pass": true
+      },
+      {
+        "path": "data/raw/atp_odds_2010_2025/2025.xlsx",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/raw/",
+        "pass": true
+      },
+      {
+        "path": "2010.xls",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.xls",
+        "pass": true
+      },
+      {
+        "path": "2025.xlsx",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.xlsx",
+        "pass": true
+      },
+      {
+        "path": "data/processed/atp_ttt_input_2010_2025.csv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/processed/",
+        "pass": true
+      },
+      {
+        "path": "data/processed/extra.json",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/processed/",
+        "pass": true
+      },
+      {
+        "path": "data/processed/player_lookup_2010_2025.csv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/processed/",
+        "pass": true
+      },
+      {
+        "path": "data/processed/rolling_checkpoints/glm_example_date.rds",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/processed/",
+        "pass": true
+      },
+      {
+        "path": "data/processed/rolling_checkpoints_primary_nn_maxit1000/primary_nn_validation_grid_checkpoint.rds",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/data/processed/",
+        "pass": true
+      },
+      {
+        "path": "rolling_checkpoints_extra/cache.bin",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "rolling_checkpoints*/",
+        "pass": true
+      },
+      {
+        "path": "outputs/logs/ttt_genuine_yearly_sessionInfo.txt",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/*",
+        "pass": true
+      },
+      {
+        "path": "outputs/tables/primary_nn_maxit1000/nn_primary_maxit1000_run_summary.csv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/*",
+        "pass": true
+      },
+      {
+        "path": "outputs/tables/any.txt",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/*",
+        "pass": true
+      },
+      {
+        "path": "outputs/figures/bookmaker_calibration.png",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/*",
+        "pass": true
+      },
+      {
+        "path": "outputs/sensitivity/nn_convergence_sensitivity_predictions.csv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/*",
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/unreviewed.csv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/selected_results/*",
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/unreviewed.json",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/selected_results/*",
+        "pass": true
+      },
+      {
+        "path": "temporary.csv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.csv",
+        "pass": true
+      },
+      {
+        "path": "temporary.tsv",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.tsv",
+        "pass": true
+      },
+      {
+        "path": "fitted.rds",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.rds",
+        "pass": true
+      },
+      {
+        "path": "fitted.RDS",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.RDS",
+        "pass": true
+      },
+      {
+        "path": ".Rhistory",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.Rhistory",
+        "pass": true
+      },
+      {
+        "path": ".RData",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.RData",
+        "pass": true
+      },
+      {
+        "path": ".Renviron",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": ".Renviron",
+        "pass": true
+      },
+      {
+        "path": ".env",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": ".env",
+        "pass": true
+      },
+      {
+        "path": ".env.local",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": ".env.*",
+        "pass": true
+      },
+      {
+        "path": "private_key.pem",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.pem",
+        "pass": true
+      },
+      {
+        "path": "Rplots.pdf",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.pdf",
+        "pass": true
+      },
+      {
+        "path": "source_report.pdf",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.pdf",
+        "pass": true
+      },
+      {
+        "path": "starter.zip",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "*.zip",
+        "pass": true
+      },
+      {
+        "path": "sources/ATP/R_original/01_DataProcessing.R",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/sources/",
+        "pass": true
+      },
+      {
+        "path": "reference/Portfolio_Execution_Spec_v1.0.md",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/reference/",
+        "pass": true
+      },
+      {
+        "path": "R_original/01_DataProcessing.R",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/R_original/",
+        "pass": true
+      },
+      {
+        "path": "private/note.txt",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/private/",
+        "pass": true
+      },
+      {
+        "path": "staging/note.txt",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/staging/",
+        "pass": true
+      },
+      {
+        "path": ".DS_Store",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": ".DS_Store",
+        "pass": true
+      },
+      {
+        "path": "Thumbs.db",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "Thumbs.db",
+        "pass": true
+      },
+      {
+        "path": "outputs/logs/run.log",
+        "expected_ignored": true,
+        "ignored": true,
+        "pattern": "/outputs/*",
+        "pass": true
+      },
+      {
+        "path": "README.md",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": ".gitignore",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "R/01_data_processing.R",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "data/README.md",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "reproducibility/environment.md",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "reproducibility/source_map.json",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "reproducibility/code_edits.patch",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "figures/.gitkeep",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "",
+        "pass": true
+      },
+      {
+        "path": "outputs/selected_results/README.md",
+        "expected_ignored": false,
+        "ignored": false,
+        "pattern": "!/outputs/selected_results/README.md",
+        "pass": true
+      }
+    ]
+  }
+}
